@@ -8,7 +8,7 @@ import os
 # nltk.download('punkt')
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'development_key'  # Use a more secure key in production
+# app.config['SECRET_KEY'] = 'development_key'  # Use a more secure key in production
 
 # Load the text
 with open('static/divine_comedy.txt', 'r', encoding="utf8") as file:
