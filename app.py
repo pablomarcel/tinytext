@@ -3,12 +3,17 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 import nltk
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # Ensure nltk resources are downloaded
 # nltk.download('punkt')
 
 app = Flask(__name__)
-# app.config['SECRET_KEY'] = 'development_key'  # Use a more secure key in production
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+
 
 # Load the text
 with open('static/divine_comedy.txt', 'r', encoding="utf8") as file:
