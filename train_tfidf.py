@@ -2,6 +2,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import nltk
 import pickle
 
+
 # Custom tokenizer for the TfidfVectorizer
 def tokenize(text):
     tokens = [
@@ -10,6 +11,7 @@ def tokenize(text):
         if len(word) > 1 and not word.isnumeric()
     ]
     return tokens
+
 
 # Load the text
 with open("static/divine_comedy_short.txt", "r", encoding="utf8") as file:

@@ -17,6 +17,7 @@ try:
 except Exception as e:
     app.logger.error("Error loading divine_comedy_short.txt: %s", e)
 
+
 # Custom tokenizer for the TfidfVectorizer
 def tokenize(text):
     tokens = [
@@ -26,14 +27,16 @@ def tokenize(text):
     ]
     return tokens
 
+
 # Load the pre-trained TfidfVectorizer model and tfidf_matrix from tfidf_model.pkl
-vectorizer = TfidfVectorizer(stop_words='english', tokenizer=tokenize)
+vectorizer = TfidfVectorizer(stop_words="english", tokenizer=tokenize)
 vectorizer.fit(documents)
 try:
     with open("static/tfidf_matrix.pkl", "rb") as file:
         tfidf_matrix = pickle.load(file)
 except Exception as e:
     app.logger.error(f"Error loading tfidf_matrix.pkl: {e}")
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -57,6 +60,7 @@ def index():
         else:
             return redirect("/")
     return render_template("index.html")
+
 
 if __name__ == "__main__":
     app.run(debug=False)
